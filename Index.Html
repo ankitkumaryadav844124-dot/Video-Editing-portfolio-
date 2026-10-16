@@ -2,304 +2,962 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Video Editing | Video Templates & Effects</title>
-<meta name="description" content="Ready-to-use video templates, effects, transitions and presets for creators. Book a free demo trial today.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Editing | Templates & Effects</title>
+<meta name="description" content="Video templates, transitions, effects and presets for video creators.">
 
-<!-- Google Fonts: Bricolage Grotesque (headings) + DM Sans (body) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<!-- Font Awesome (icons) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-  /* ===== COLORS: change these 5 values to re-theme the whole site ===== */
-  :root{
-    --ink:#1B1840;      /* dark indigo: header, footer, dark sections */
-    --paper:#FAF8FF;    /* page background */
-    --brand:#6D4AFF;    /* main violet: buttons, links */
-    --coral:#FF6B5B;    /* accent: highlights */
-    --mint:#2DD4A8;     /* accent: success, timeline */
+:root {
+  --ink: #1B1840;
+  --paper: #FAF8FF;
+  --brand: #6D4AFF;
+  --coral: #FF6B5B;
+  --mint: #2DD4A8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+h1, h2, h3, .brand {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+.container {
+  width: min(1120px, calc(100% - 40px));
+  margin: auto;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.heading {
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.2;
+}
+
+.description {
+  margin-top: 14px;
+  color: #68657D;
+  max-width: 650px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-brand {
+  color: white;
+  background: var(--brand);
+}
+
+.btn-brand:hover {
+  background: #5836E6;
+}
+
+.btn-outline {
+  color: white;
+  border: 1px solid #ffffff55;
+  background: transparent;
+}
+
+/* NAVIGATION */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: white;
+}
+
+.navbar {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.brand i {
+  color: var(--coral);
+  margin-right: 8px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 26px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: var(--mint);
+}
+
+.menu-btn {
+  display: none;
+  color: white;
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  padding: 0 20px 15px;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu a {
+  padding: 12px 0;
+  border-top: 1px solid #ffffff20;
+}
+
+/* HERO */
+
+.hero {
+  background: var(--ink);
+  color: white;
+  padding: 75px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--mint);
+  background: #2DD4A818;
+  padding: 7px 13px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.08;
+  font-weight: 800;
+}
+
+.hero h1 span {
+  color: var(--coral);
+}
+
+.hero-description {
+  margin-top: 22px;
+  color: #ffffffb8;
+  font-size: 17px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hero-note {
+  color: #ffffffa0;
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+/* EDITING TIMELINE */
+
+.timeline {
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid #ffffff25;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #ffffff12, #ffffff04);
+}
+
+.timeline-top,
+.timeline-bottom {
+  display: flex;
+  justify-content: space-between;
+  color: #ffffffbd;
+  font-size: 13px;
+}
+
+.preview {
+  height: 160px;
+  display: grid;
+  place-items: center;
+  margin: 20px 0;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 70% 25%, #FF6B5B88, transparent 30%),
+    radial-gradient(circle at 25% 70%, #6D4AFF, transparent 45%),
+    linear-gradient(135deg, #302866, #15132E);
+}
+
+.preview i {
+  font-size: 52px;
+  color: white;
+}
+
+.track {
+  display: flex;
+  gap: 5px;
+  height: 27px;
+  margin: 9px 0;
+}
+
+.clip {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.clip-a { width: 30%; background: var(--brand); }
+.clip-b { width: 20%; background: var(--coral); }
+.clip-c { width: 40%; background: #947CFF; }
+.clip-d { width: 35%; background: var(--mint); }
+.clip-e { width: 25%; background: #178C70; }
+.clip-f { width: 55%; background: #ffffff38; }
+
+.playhead {
+  position: absolute;
+  top: 80px;
+  bottom: 45px;
+  left: 10%;
+  width: 2px;
+  background: var(--coral);
+  pointer-events: none;
+  animation: scrub 6s linear infinite alternate;
+}
+
+@keyframes scrub {
+  from { left: 10%; }
+  to { left: 90%; }
+}
+
+/* SERVICES */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 38px;
+}
+
+.service-card {
+  padding: 27px;
+  border: 1px solid #E6E1FA;
+  border-radius: 18px;
+  background: white;
+  transition: .2s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px #35208010;
+}
+
+.service-icon {
+  font-size: 28px;
+  color: var(--brand);
+}
+
+.service-card:nth-child(even) .service-icon {
+  color: var(--coral);
+}
+
+.service-card h3 {
+  margin-top: 18px;
+  font-size: 21px;
+}
+
+.service-card p {
+  margin-top: 10px;
+  color: #68657D;
+  font-size: 14px;
+}
+
+/* ABOUT */
+
+.about {
+  background: white;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.about-copy {
+  margin-top: 18px;
+  color: #68657D;
+  font-size: 17px;
+}
+
+.about-list {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.about-list i {
+  color: #159D7B;
+  margin-right: 10px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.stat {
+  padding: 24px 8px;
+  border-radius: 16px;
+  background: var(--paper);
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 22px;
+  color: var(--brand);
+}
+
+.stat span {
+  color: #68657D;
+  font-size: 12px;
+}
+
+/* DEMO FORM */
+
+.demo {
+  background: var(--ink);
+  color: white;
+}
+
+.demo .description {
+  color: #ffffffb5;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.field {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 15px;
+  border: 1.5px solid #D9D4F0;
+  border-radius: 10px;
+  background: white;
+  color: var(--ink);
+}
+
+textarea.field {
+  resize: vertical;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.form-message {
+  min-height: 22px;
+  font-size: 14px;
+}
+
+button:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+/* CONTACT */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+}
+
+.contact-items {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  overflow-wrap: anywhere;
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--brand);
+  color: white;
+}
+
+.contact-item:nth-child(2) .contact-icon {
+  background: #25D366;
+}
+
+.contact-item:nth-child(3) .contact-icon {
+  background: var(--coral);
+}
+
+.contact-form {
+  display: grid;
+  gap: 14px;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 30px 0;
+  background: var(--ink);
+  color: #ffffffc7;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-size: 14px;
+}
+
+.socials {
+  display: flex;
+  gap: 18px;
+  font-size: 21px;
+}
+
+.socials a:hover {
+  color: var(--mint);
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 90;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: #25D366;
+  font-size: 29px;
+  box-shadow: 0 8px 25px #0002;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .nav-links,
+  .nav-cta {
+    display: none;
   }
-  /* Color helper classes (use these in the HTML instead of Tailwind arbitrary values) */
-  .bg-ink{background:var(--ink)} .bg-paper{background:var(--paper)}
-  .bg-brand{background:var(--brand)} .bg-coral{background:var(--coral)}
-  .tx-ink{color:var(--ink)} .tx-brand{color:var(--brand)}
-  .tx-coral{color:var(--coral)} .tx-mint{color:var(--mint)}
-  .hover-mint:hover{color:var(--mint)}
 
-  html{scroll-behavior:smooth;scroll-padding-top:5rem} /* keeps headings visible below the sticky navbar */
-  body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink)}
-  h1,h2,h3,.brand{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
-  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:.75rem;font-weight:700;transition:transform .15s,background .15s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn-brand{background:var(--brand);color:#fff}
-  .btn-brand:hover{background:#5836E6}
-  .btn-ghost{border:2px solid #fff3;color:#fff}
-  .btn-ghost:hover{background:#ffffff14}
-  .field{width:100%;padding:.8rem 1rem;border:1.5px solid #d9d4f0;border-radius:.65rem;background:#fff;color:var(--ink);font-size:1rem}
-  .field:focus{outline:3px solid #6D4AFF40;border-color:var(--brand)}
-  :focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+  .menu-btn {
+    display: block;
+  }
 
-  /* ===== Hero timeline animation (the signature element) ===== */
-  .tl{background:#ffffff0d;border:1px solid #ffffff1f;border-radius:1rem;padding:1rem;position:relative;overflow:hidden}
-  .track{height:2.1rem;border-radius:.4rem;margin:.45rem 0;display:flex;gap:.3rem}
-  .clip{border-radius:.4rem;height:100%}
-  .playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--coral);left:6%;animation:scrub 6s linear infinite}
-  .playhead::before{content:"";position:absolute;top:0;left:-5px;border:6px solid transparent;border-top-color:var(--coral)}
-  @keyframes scrub{0%{left:6%}100%{left:94%}}
-  @media (prefers-reduced-motion:reduce){.playhead{animation:none;left:40%}html{scroll-behavior:auto}}
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    width: calc(100% - 30px);
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .hero {
+    padding: 55px 0;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .services-grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: auto;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
 </style>
 </head>
 
-<body class="antialiased">
+<body>
 
-<!-- ================= NAVBAR ================= -->
-<header class="sticky top-0 z-40 bg-ink text-white">
-  <nav class="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
-    <a href="#home" class="brand text-xl font-extrabold"><i class="fa-solid fa-clapperboard tx-coral mr-2"></i>Video Editing</a>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-      <a href="#services" class="hover-mint">Services</a>
-      <a href="#about" class="hover-mint">About</a>
-      <a href="#demo" class="hover-mint">Free Demo</a>
-      <a href="#contact" class="hover-mint">Contact</a>
+<header>
+  <nav class="container navbar">
+    <a href="#home" class="brand">
+      <i class="fa-solid fa-clapperboard"></i>Video Editing
+    </a>
+
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#demo">Free Demo</a>
+      <a href="#contact">Contact</a>
     </div>
-    <a href="#demo" class="btn btn-brand hidden md:inline-flex !py-2">Book free demo</a>
-    <button id="menuBtn" class="md:hidden text-2xl" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+
+    <a href="#demo" class="btn btn-brand nav-cta">Book free demo</a>
+
+    <button id="menuBtn" class="menu-btn" type="button"
+      aria-label="Open menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
   </nav>
-  <!-- Mobile menu -->
-  <div id="mobileMenu" class="hidden md:hidden px-5 pb-4 flex-col gap-3 text-base">
-    <a href="#services" class="block py-2">Services</a>
-    <a href="#about" class="block py-2">About</a>
-    <a href="#demo" class="block py-2">Free Demo</a>
-    <a href="#contact" class="block py-2">Contact</a>
+
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#demo">Free Demo</a>
+    <a href="#contact">Contact</a>
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section id="home" class="bg-ink text-white pb-20 pt-10 md:pt-16">
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-center">
+<main>
+
+<section id="home" class="hero">
+  <div class="container hero-grid">
     <div>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05]">Edit faster with templates that already look finished.</h1>
-      <p class="mt-5 text-lg text-white/75 max-w-lg">Video templates, effects, transitions and presets for YouTubers, reel creators and editors. Drop them in your project and publish the same day.</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="#demo" class="btn btn-brand"><i class="fa-solid fa-play"></i> Try a free demo</a>
-        <a href="#services" class="btn btn-ghost">See what we make</a>
+      <span class="eyebrow">✦ Made for creators</span>
+
+      <h1>Edit faster with templates that already look <span>finished.</span></h1>
+
+      <p class="hero-description">
+        Video templates, effects, transitions and presets for YouTubers,
+        reel creators and editors. Customize your project and create with confidence.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-brand">
+          <i class="fa-solid fa-play"></i> Try a free demo
+        </a>
+
+        <a href="#services" class="btn btn-outline">
+          See what we make
+        </a>
+      </div>
+
+      <p class="hero-note">✓ Beginner-friendly resources for creators</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-top">
+        <span><i class="fa-solid fa-film"></i> EDITING TIMELINE</span>
+        <span>● ● ●</span>
+      </div>
+
+      <div class="preview">
+        <i class="fa-solid fa-circle-play"></i>
+      </div>
+
+      <div class="track">
+        <div class="clip clip-a"></div>
+        <div class="clip clip-b"></div>
+        <div class="clip clip-c"></div>
+      </div>
+
+      <div class="track">
+        <div class="clip clip-d"></div>
+        <div class="clip clip-e"></div>
+      </div>
+
+      <div class="track">
+        <div class="clip clip-f"></div>
+        <div class="clip clip-b" style="width:25%"></div>
+      </div>
+
+      <div class="playhead"></div>
+
+      <div class="timeline-bottom">
+        <span>00:00:12:08</span>
+        <span>1080p · 30 FPS</span>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Fake editing timeline: edit colors/widths here -->
-    <div class="tl" aria-hidden="true">
-      <div class="track"><div class="clip" style="width:30%;background:var(--brand)"></div><div class="clip" style="width:18%;background:var(--coral)"></div><div class="clip" style="width:40%;background:#8F73FF"></div></div>
-      <div class="track"><div class="clip" style="width:12%;background:transparent"></div><div class="clip" style="width:35%;background:var(--mint)"></div><div class="clip" style="width:25%;background:#1FA283"></div></div>
-      <div class="track"><div class="clip" style="width:55%;background:#ffffff26"></div><div class="clip" style="width:25%;background:var(--coral)"></div></div>
-      <div class="track"><div class="clip" style="width:80%;background:#ffffff14"></div></div>
-      <div class="playhead"></div>
+<section id="services" class="section">
+  <div class="container">
+    <h2 class="heading">What you can get from us</h2>
+
+    <p class="description">
+      Ready-to-customize resources to help make your videos more engaging.
+    </p>
+
+    <div class="services-grid">
+      <article class="service-card">
+        <i class="fa-solid fa-film service-icon"></i>
+        <h3>Video Templates</h3>
+        <p>Intros, outros, titles and reel layouts for your projects.</p>
+      </article>
+
+      <article class="service-card">
+        <i class="fa-solid fa-wand-magic-sparkles service-icon"></i>
+        <h3>Visual Effects</h3>
+        <p>Glitch, glow, light leaks and overlays for your videos.</p>
+      </article>
+
+      <article class="service-card">
+        <i class="fa-solid fa-shuffle service-icon"></i>
+        <h3>Smooth Transitions</h3>
+        <p>Zoom, whip, spin and slide transition ideas for cleaner edits.</p>
+      </article>
+
+      <article class="service-card">
+        <i class="fa-solid fa-palette service-icon"></i>
+        <h3>Color Presets</h3>
+        <p>Cinematic, warm and clean looks for consistent visuals.</p>
+      </article>
+
+      <article class="service-card">
+        <i class="fa-solid fa-closed-captioning service-icon"></i>
+        <h3>Animated Captions</h3>
+        <p>Subtitle styles for Hindi and English reels and shorts.</p>
+      </article>
+
+      <article class="service-card">
+        <i class="fa-solid fa-pen-ruler service-icon"></i>
+        <h3>Custom Templates</h3>
+        <p>Contact us to discuss a custom design for your brand.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ================= SERVICES ================= -->
-<section id="services" class="py-20">
-  <div class="max-w-6xl mx-auto px-5">
-    <h2 class="text-3xl sm:text-4xl font-extrabold max-w-xl">What you can get from us</h2>
-    <p class="mt-3 text-slate-600 max-w-xl">Everything is ready to use and easy to customize with your own text, photos and colors.</p>
-
-    <!-- To add a service: copy one <article> block below and change icon, title and text -->
-    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <article class="bg-white border border-[#e6e1fa] rounded-2xl p-6">
-        <i class="fa-solid fa-film text-2xl tx-brand"></i>
-        <h3 class="mt-4 text-xl font-bold">Video templates</h3>
-        <p class="mt-2 text-slate-600">Intros, outros, lower thirds, titles and reel layouts. Change the text and export.</p>
-      </article>
-      <article class="bg-white border border-[#e6e1fa] rounded-2xl p-6">
-        <i class="fa-solid fa-wand-magic-sparkles text-2xl tx-coral"></i>
-        <h3 class="mt-4 text-xl font-bold">Visual effects</h3>
-        <p class="mt-2 text-slate-600">Glitch, glow, light leaks, shake and overlays that add energy to any clip.</p>
-      </article>
-      <article class="bg-white border border-[#e6e1fa] rounded-2xl p-6">
-        <i class="fa-solid fa-shuffle text-2xl tx-mint"></i>
-        <h3 class="mt-4 text-xl font-bold">Smooth transitions</h3>
-        <p class="mt-2 text-slate-600">Zoom, whip, spin and slide transitions you can apply with a single drag.</p>
-      </article>
-      <article class="bg-white border border-[#e6e1fa] rounded-2xl p-6">
-        <i class="fa-solid fa-palette text-2xl tx-brand"></i>
-        <h3 class="mt-4 text-xl font-bold">Color presets</h3>
-        <p class="mt-2 text-slate-600">Cinematic, warm, moody and clean looks to grade your footage in seconds.</p>
-      </article>
-      <article class="bg-white border border-[#e6e1fa] rounded-2xl p-6">
-        <i class="fa-solid fa-closed-captioning text-2xl tx-coral"></i>
-        <h3 class="mt-4 text-xl font-bold">Animated captions</h3>
-        <p class="mt-2 text-slate-600">Eye-catching subtitle styles for Hindi and English reels and shorts.</p>
-      </article>
-      <article class="bg-white border border-[#e6e1fa] rounded-2xl p-6">
-        <i class="fa-solid fa-pen-ruler text-2xl tx-mint"></i>
-        <h3 class="mt-4 text-xl font-bold">Custom template</h3>
-        <p class="mt-2 text-slate-600">Need something specific for your brand? Tell us and we will build it for you.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ABOUT ================= -->
-<section id="about" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-center">
+<section id="about" class="section about">
+  <div class="container about-grid">
     <div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold">Made by an editor, for editors</h2>
-      <!-- Edit this paragraph to tell your own story -->
-      <p class="mt-4 text-slate-600 text-lg">We know what eats the most time in editing: rebuilding the same effects and layouts again and again. That is why we make templates that save your time and give every video a professional look.</p>
-      <ul class="mt-6 space-y-3">
-        <li><i class="fa-solid fa-circle-check tx-mint mr-2"></i>Works with popular editing apps</li>
-        <li><i class="fa-solid fa-circle-check tx-mint mr-2"></i>Easy to edit, no advanced skills needed</li>
-        <li><i class="fa-solid fa-circle-check tx-mint mr-2"></i>Support on WhatsApp whenever you are stuck</li>
+      <h2 class="heading">Made for editors and creators</h2>
+
+      <p class="about-copy">
+        Editing the same titles and effects repeatedly takes time.
+        Well-organized templates can help you work faster and maintain
+        a consistent look across your videos.
+      </p>
+
+      <ul class="about-list">
+        <li><i class="fa-solid fa-circle-check"></i>Resources for popular editing apps</li>
+        <li><i class="fa-solid fa-circle-check"></i>Easy-to-customize designs</li>
+        <li><i class="fa-solid fa-circle-check"></i>Contact support for questions</li>
       </ul>
     </div>
-    <!-- Edit the numbers below to match your real stats -->
-    <div class="grid grid-cols-3 gap-4 text-center">
-      <div class="rounded-2xl bg-paper p-5"><p class="brand text-3xl font-extrabold tx-brand">100+</p><p class="text-sm text-slate-600">Templates</p></div>
-      <div class="rounded-2xl bg-paper p-5"><p class="brand text-3xl font-extrabold tx-coral">50+</p><p class="text-sm text-slate-600">Effects</p></div>
-      <div class="rounded-2xl bg-paper p-5"><p class="brand text-3xl font-extrabold tx-mint">24h</p><p class="text-sm text-slate-600">Reply time</p></div>
+
+    <div class="stats">
+      <div class="stat">
+        <strong>Templates</strong>
+        <span>Creative resources</span>
+      </div>
+
+      <div class="stat">
+        <strong>Effects</strong>
+        <span>Visual ideas</span>
+      </div>
+
+      <div class="stat">
+        <strong>Support</strong>
+        <span>Get in touch</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= FREE DEMO BOOKING ================= -->
-<section id="demo" class="py-20 bg-ink text-white">
-  <div class="max-w-3xl mx-auto px-5">
-    <h2 class="text-3xl sm:text-4xl font-extrabold">Book your free demo trial</h2>
-    <p class="mt-3 text-white/75">Pick a day and time. We will send you a sample template so you can try it before you buy.</p>
+<section id="demo" class="section demo">
+  <div class="container">
+    <h2 class="heading">Request your free demo</h2>
 
-    <form id="demoForm" class="mt-8 grid sm:grid-cols-2 gap-4">
+    <p class="description">
+      Choose your editing app and preferred date. We will contact you
+      to confirm the details.
+    </p>
+
+    <form id="demoForm" class="form-grid">
       <input type="hidden" name="subject" value="New Free Demo Booking">
-      <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off"><!-- spam trap, keep -->
-      <input class="field" type="text" name="name" placeholder="Your name" required aria-label="Your name">
-      <input class="field" type="tel" name="phone" placeholder="Phone / WhatsApp number" required aria-label="Phone number">
-      <input class="field" type="email" name="email" placeholder="Email (optional)" aria-label="Email">
-      <select class="field" name="software" required aria-label="Editing software">
+
+      <input type="checkbox" name="botcheck"
+        style="display:none" tabindex="-1" autocomplete="off">
+
+      <input class="field" type="text" name="name"
+        placeholder="Your name" required aria-label="Your name">
+
+      <input class="field" type="tel" name="phone"
+        placeholder="Phone / WhatsApp number" required
+        aria-label="Phone number">
+
+      <input class="field" type="email" name="email"
+        placeholder="Email (optional)" aria-label="Email">
+
+      <select class="field" name="software" required aria-label="Editing app">
         <option value="">Which app do you use?</option>
-        <option>Premiere Pro</option><option>After Effects</option><option>CapCut</option>
-        <option>DaVinci Resolve</option><option>Filmora</option><option>Other</option>
+        <option>CapCut</option>
+        <option>Premiere Pro</option>
+        <option>After Effects</option>
+        <option>DaVinci Resolve</option>
+        <option>Filmora</option>
+        <option>Other</option>
       </select>
-      <input class="field" type="date" name="preferred_date" required aria-label="Preferred date">
-      <select class="field" name="preferred_time" required aria-label="Preferred time">
+
+      <input class="field" type="date" name="preferred_date"
+        required aria-label="Preferred date">
+
+      <select class="field" name="preferred_time" required
+        aria-label="Preferred time">
         <option value="">Preferred time</option>
-        <option>Morning (9 AM - 12 PM)</option><option>Afternoon (12 PM - 4 PM)</option><option>Evening (4 PM - 8 PM)</option>
+        <option>Morning (9 AM - 12 PM)</option>
+        <option>Afternoon (12 PM - 4 PM)</option>
+        <option>Evening (4 PM - 8 PM)</option>
       </select>
-      <textarea class="field sm:col-span-2" name="message" rows="3" placeholder="What kind of videos do you make? (optional)"></textarea>
-      <button type="submit" class="btn btn-brand sm:col-span-2 justify-center"><i class="fa-solid fa-calendar-check"></i> Book free demo</button>
-      <p id="demoMsg" class="sm:col-span-2 text-sm text-white" role="status"></p>
+
+      <textarea class="field full" name="message" rows="3"
+        placeholder="What kind of videos do you make? (optional)"
+        aria-label="Describe your videos"></textarea>
+
+      <button type="submit" class="btn btn-brand full">
+        <i class="fa-solid fa-calendar-check"></i> Book free demo
+      </button>
+
+      <p id="demoMsg" class="form-message full"
+        role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="py-20">
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12">
+<section id="contact" class="section">
+  <div class="container contact-grid">
     <div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold">Send us a message</h2>
-      <p class="mt-3 text-slate-600">Questions about a template, pricing or a custom order? Write to us and we will reply soon.</p>
-      <div class="mt-8 space-y-4">
-        <a data-phone class="flex items-center gap-4"><span class="w-11 h-11 rounded-full bg-brand text-white grid place-items-center"><i class="fa-solid fa-phone"></i></span><span data-phone-text></span></a>
-        <a data-wa target="_blank" rel="noopener" class="flex items-center gap-4"><span class="w-11 h-11 rounded-full bg-[#25D366] text-white grid place-items-center"><i class="fa-brands fa-whatsapp text-xl"></i></span><span>Chat on WhatsApp</span></a>
-        <a data-mail class="flex items-center gap-4 break-all"><span class="w-11 h-11 rounded-full bg-coral text-white grid place-items-center"><i class="fa-solid fa-envelope"></i></span><span data-mail-text></span></a>
+      <h2 class="heading">Send us a message</h2>
+
+      <p class="description">
+        Questions about templates, pricing or a custom order?
+        Contact us using the details below.
+      </p>
+
+      <div class="contact-items">
+        <a data-phone class="contact-item">
+          <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
+          <span data-phone-text></span>
+        </a>
+
+        <a data-wa target="_blank" rel="noopener noreferrer" class="contact-item">
+          <span class="contact-icon"><i class="fa-brands fa-whatsapp"></i></span>
+          <span>Chat on WhatsApp</span>
+        </a>
+
+        <a data-mail class="contact-item">
+          <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+          <span data-mail-text></span>
+        </a>
       </div>
     </div>
 
-    <form id="contactForm" class="grid gap-4">
+    <form id="contactForm" class="contact-form">
       <input type="hidden" name="subject" value="New Website Message">
-      <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off"><!-- spam trap, keep -->
-      <input class="field" type="text" name="name" placeholder="Your name" required aria-label="Your name">
-      <input class="field" type="email" name="email" placeholder="Your email" required aria-label="Your email">
-      <textarea class="field" name="message" rows="5" placeholder="Your message" required aria-label="Your message"></textarea>
-      <button type="submit" class="btn btn-brand justify-center"><i class="fa-solid fa-paper-plane"></i> Send message</button>
-      <p id="contactMsg" class="text-sm" role="status"></p>
+
+      <input type="checkbox" name="botcheck"
+        style="display:none" tabindex="-1" autocomplete="off">
+
+      <input class="field" type="text" name="name"
+        placeholder="Your name" required aria-label="Your name">
+
+      <input class="field" type="email" name="email"
+        placeholder="Your email" required aria-label="Your email">
+
+      <textarea class="field" name="message" rows="5"
+        placeholder="Your message" required aria-label="Your message"></textarea>
+
+      <button type="submit" class="btn btn-brand">
+        <i class="fa-solid fa-paper-plane"></i> Send message
+      </button>
+
+      <p id="contactMsg" class="form-message"
+        role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="bg-ink text-white/80 py-10">
-  <div class="max-w-6xl mx-auto px-5 flex flex-col sm:flex-row gap-4 justify-between items-center text-sm">
-    <p class="brand text-lg font-bold text-white"><i class="fa-solid fa-clapperboard tx-coral mr-2"></i>Video Editing</p>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p class="brand" style="color:white">
+      <i class="fa-solid fa-clapperboard"></i>Video Editing
+    </p>
+
     <p>&copy; <span id="year"></span> Video Editing. All rights reserved.</p>
-    <!-- Add your social links here (replace # with your channel/profile URL) -->
-    <div class="flex gap-4 text-xl">
+
+    <div class="socials">
       <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
       <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
     </div>
   </div>
 </footer>
 
-<!-- Floating WhatsApp button -->
-<a data-wa target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
-   class="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white grid place-items-center text-3xl shadow-lg hover:scale-105 transition">
+<a data-wa target="_blank" rel="noopener noreferrer"
+  aria-label="Chat on WhatsApp" class="whatsapp-float">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 <script>
-/* ============ SETTINGS: change your details here ============ */
+/* WEBSITE SETTINGS */
 const CONFIG = {
-  phone: "8851093591",                       // shown on the site
-  whatsapp: "918851093591",                  // country code (91) + number, no + or spaces
+  phone: "8851093591",
+  whatsapp: "918851093591",
   email: "ankitkumaryadav844124@gmail.com",
-  web3formsKey: "xxxx-xxxx-xxxx",            // <-- paste your real Web3Forms access key here
+  web3formsKey: "YOUR_WEB3FORMS_ACCESS_KEY",
   waMessage: "Hi! I want to know more about your video templates."
 };
-/* ============================================================ */
 
-// Fill phone, WhatsApp and email links everywhere
-document.querySelectorAll("[data-phone]").forEach(a => a.href = "tel:+91" + CONFIG.phone);
-document.querySelectorAll("[data-phone-text]").forEach(s => s.textContent = "+91 " + CONFIG.phone);
-document.querySelectorAll("[data-mail]").forEach(a => a.href = "mailto:" + CONFIG.email);
-document.querySelectorAll("[data-mail-text]").forEach(s => s.textContent = CONFIG.email);
-document.querySelectorAll("[data-wa]").forEach(a => a.href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(CONFIG.waMessage));
+/* CONTACT LINKS */
+document.querySelectorAll("[data-phone]").forEach(a => {
+  a.href = "tel:+91" + CONFIG.phone;
+});
+
+document.querySelectorAll("[data-phone-text]").forEach(el => {
+  el.textContent = "+91 " + CONFIG.phone;
+});
+
+document.querySelectorAll("[data-mail]").forEach(a => {
+  a.href = "mailto:" + CONFIG.email;
+});
+
+document.querySelectorAll("[data-mail-text]").forEach(el => {
+  el.textContent = CONFIG.email;
+});
+
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = "https://wa.me/" + CONFIG.whatsapp +
+    "?text=" + encodeURIComponent(CONFIG.waMessage);
+});
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Mobile menu toggle
+/* MOBILE MENU */
 const menu = document.getElementById("mobileMenu");
-document.getElementById("menuBtn").onclick = () => { menu.classList.toggle("hidden"); menu.classList.toggle("flex"); };
-menu.querySelectorAll("a").forEach(a => a.onclick = () => { menu.classList.add("hidden"); menu.classList.remove("flex"); });
+const menuBtn = document.getElementById("menuBtn");
 
-// Demo booking: block past dates (uses local date, not UTC)
-const now = new Date();
-const today = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0") + "-" + String(now.getDate()).padStart(2, "0");
-document.querySelector('#demoForm [name="preferred_date"]').min = today;
+menuBtn.addEventListener("click", () => {
+  const open = menu.classList.toggle("open");
 
-// Send any form to your email through Web3Forms
-function handleForm(formId, msgId, okText) {
-  const form = document.getElementById(formId), msg = document.getElementById(msgId);
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
 
-    // Stop early if the key was not replaced yet
-    if (CONFIG.web3formsKey.includes("xxxx")) {
-      msg.textContent = "Setup needed: add your Web3Forms key in CONFIG (bottom of the file).";
-      msg.style.color = "#FF6B5B";
-      return;
-    }
+  menuBtn.innerHTML = open
+    ? '<i class="fa-solid fa-xmark"></i>'
+    : '<i class="fa-solid fa-bars"></i>';
+});
 
-    const btn = form.querySelector("button[type=submit]"), label = btn.innerHTML;
-    btn.disabled = true; btn.innerHTML = "Sending...";
-    const data = new FormData(form);
-    data.append("access_key", CONFIG.web3formsKey);
-    data.append("from_name", "Video Editing Website");
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
-      const json = await res.json();
-      if (json.success) { msg.textContent = okText; msg.style.color = "#2DD4A8"; form.reset(); }
-      else { throw new Error(json.message); }
-    } catch (err) {
-      msg.textContent = "Could not send. Please try again or message us on WhatsApp.";
-      msg.style.color = "#FF6B5B";
-    }
-    btn.disabled = false; btn.innerHTML = label;
-  });
-}
-handleForm("demoForm", "demoMsg", "Booking received! We will contact you on WhatsApp to confirm your demo.");
-handleForm("contactForm", "contactMsg", "Message sent! We will reply soon.");
-</script>
-</body>
-</html>
+menu.querySelectorAll("a").forEach(a => {
+  a.addEventListener("click", () => {
+    menu.classList.remove("open");
